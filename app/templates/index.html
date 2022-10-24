@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Apartments {% endblock %}</h1>
+    {% for point in data %}
+        <div class='book'>
+            <h3>#{{ point[0] }} - {{ point[1] }} </h3>
+            <img src={{ point[2] }} alt="apartment photo" width="200">
+        </div>
+    {% endfor %}
+{% endblock %}

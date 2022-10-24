@@ -1,0 +1,30 @@
+services:
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+        - ./app/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+  app:
+    build: ./app
+    restart: always
+    depends_on:
+      - scrapy
+    ports:
+      - 8080:8080
+  scrapy:
+    build: ./fetching
+    ports:
+      - 8000:5000
+    depends_on:
+      - database
+
+
+
+        

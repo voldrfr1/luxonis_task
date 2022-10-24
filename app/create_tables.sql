@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS flats
+      (ID SERIAL PRIMARY KEY NOT NULL,
+      NAME        TEXT    NOT NULL,
+      IMG_URL       TEXT);
